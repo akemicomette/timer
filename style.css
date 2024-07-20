@@ -10,4 +10,83 @@
   --stagger: calc(-1 * var(--semi-duration) / 2);
 }
 
+@media(max-width: 1200px) {
+  .dog {
+    display: none;
+  }
 
+  .App {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 90%;
+  }
+
+  .timerWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 5rem;
+    width: 95%;
+  }
+  
+  .d-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .camp {
+    width: 95%;
+    font-size: 2.5rem;
+  }
+
+  .btn {
+    margin: 0.25rem 0.125rem;
+    padding: 1rem 2.4rem;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 1.5rem;
+    letter-spacing: 0.6px;
+    border-radius: 0.3rem;
+    color: #fff;
+    background-color: var(--color-snout);
+    border: none;
+    box-shadow: 0 2px 5px rgba(51, 51, 51, 0.4);
+    transition: 0.3s ease;
+  }
+  .btn:hover,
+  .btn-play:hover,
+  .btn-pause:hover {
+    cursor: pointer;
+    box-shadow: none;
+    transition: 0.3s ease;
+    background: rgba(0, 0, 0, 0.75);
+  }
+
+  .btn-stop {
+    background-color: var(--color-spot);
+    color: white;
+  }
+  .btn-stop:hover {
+    background:var(--color-fur-dark);
+  }
+  
+  .btn-pause {
+    background-color: var(--color-fur-dark);
+    color: white;
+    color: #000;
+  }
+  .btn-pause:hover {
+    background: rgba(255, 193, 7, 0.75);
+  }
+  
+  .btn-play {
+    background-color: var(--color-collar);
+    color: white;
+  }
+  .btn-play:hover {
+    background: var(--color-fur-dark);
+  }
+  
+}

@@ -1,4 +1,3 @@
-import './App.css'
 import CountDownTimer from './component/CountDownTimer'
 
 function App() {

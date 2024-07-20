@@ -5,12 +5,9 @@ import {BsFillPlayFill, BsPauseFill, BsStopFill} from "react-icons/bs"
 export default function CountDownTimer() {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
-  const [isRunning, setIsRunning] = useState(null);
+  const [isRunning, setIsRunning] = useState(false);
 
-  const[showEndScreen, setShowEndScreen] = useState({
-    show: false,
-    message: 'Que tipo de carro o Yoda dirige? Toyoda.',
-  })
+  const[showEndScreen, setShowEndScreen] = useState(false);
 
   useEffect(() => {
     let interval;
@@ -21,23 +18,20 @@ export default function CountDownTimer() {
         } else if (minutes > 0) {
           setMinutes((minutes) => minutes -1);
           setSeconds(59);
+        } else {
+          resetTimer();
+          setShowEndScreen(true);
         }
       },1000);
     }
 
-    if(minutes === 0 && seconds === 0 ) {
-      setShowEndScreen({ ...showEndScreen, show:true });
-      resetTimer();
-    }
-
     return () => clearInterval(interval);
-  }, [seconds, minutes, isRunning, showEndScreen.show]);
+  }, [seconds, minutes, isRunning, showEndScreen]);
 
 
   function startTimer() {
     if(minutes !== 0 || seconds !== 0 ) {
       setIsRunning(true);
-      setShowEndScreen({... showEndScreen, show: false});
     } else {
       alert('Insira o tempo desejado');
     }
@@ -50,7 +44,7 @@ export default function CountDownTimer() {
 
   function stopTimer() {
     resetTimer();
-    setShowEndScreen({...showEndScreen, show: false });
+    setShowEndScreen(false);
   }
   
   function resetTimer() {
@@ -61,15 +55,19 @@ export default function CountDownTimer() {
 
   const changeSeconds = (e) => {
     setSeconds(e.target.value);
+    setShowEndScreen(false);
   }
 
   const changeMinutes = (e) => {
     setMinutes(e.target.value);
+    setShowEndScreen(false);
   }
+
+  const getMessage = () => <h1 className="title">Que tipo de carro o Mestre Yoda dirige? TOYODA!</h1>
 
   return (
     <div>
-      {showEndScreen.show && <h1 className="title">{showEndScreen.message}</h1>}
+      {showEndScreen && getMessage()}
       <Timer 
       seconds={seconds} 
       minutes={minutes} 
@@ -79,16 +77,16 @@ export default function CountDownTimer() {
 
       <br/>
       {!isRunning && (
-        <button className="btn btn-play btn-lg" onClick={startTimer}>
+        <button className="btn btn-play" onClick={startTimer}>
           <BsFillPlayFill/>
         </button>
       )}
        {isRunning && (
-        <button className="btn btn-pause btn-lg" onClick={pauseTimer}>
+        <button className="btn btn-pause" onClick={pauseTimer}>
           <BsPauseFill/>
         </button>
       )}
-      <button className="btn btn-stop btn-lg" onClick={stopTimer}>
+      <button className="btn btn-stop " onClick={stopTimer}>
         <BsStopFill />
       </button>
     </div>
