@@ -63,7 +63,13 @@ export default function CountDownTimer() {
     setShowEndScreen(false);
   }
 
-  const getMessage = () => <h1 className="title">Que tipo de carro o Mestre Yoda dirige? TOYODA!</h1>
+  const getMessage = () => <div className="container-gif"> 
+      <h1 className="title">Que tipo de carro o Mestre Yoda dirige? TOYODA!</h1>
+      <div className="gif">
+        <iframe src="https://giphy.com/embed/IzUyLRajLacwq7i0Ho/video">
+        </iframe>
+      </div>
+    </div>
 
   return (
     <div>

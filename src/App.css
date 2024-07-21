@@ -112,5 +112,20 @@
   background: var(--color-fur-dark);
 }
 
+.container-gif {
+  display: flex;
+}
 
+.title {
+  font: 500;
+  font-family: 'Montserrat', sans-serif;
+  align-items: center;
+  margin-left: 2rem;
+}
 
+.gif {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 60%;
+}
